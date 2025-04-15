@@ -1,0 +1,119 @@
+:root {
+  --gray-50: #f8fafc;
+  --gray-200: #e2e8f0;
+  --gray-600: #475569;
+  --primary-color: #4f46e5;
+  --primary-dark: #4338ca;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Inter", sans-serif;
+  background: var(--gray-50);
+  color: #0f172a;
+}
+
+.register-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: var(--gray-50);
+  padding: 2rem;
+}
+
+.register-card {
+  background: #ffffff;
+  padding: 3rem 2.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  width: 25vw;
+  line-height: 2;
+  border: 1px solid var(--gray-200);
+  transition: transform 0.3s ease;
+}
+
+.register-card:hover {
+  transform: translateY(-4px);
+}
+
+.register-title {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.text-primary {
+  color: var(--primary-color);
+}
+
+.register-form .form-group {
+  margin-bottom: 1.25rem;
+}
+
+.register-form label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #0f172a;
+  font-weight: 600;
+}
+
+.register-form input[type="text"],
+.register-form input[type="email"],
+.register-form input[type="password"] {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  background-color: #fff;
+  border: 1px solid var(--gray-200);
+  border-radius: 0.5rem;
+  transition: all 0.3s ease;
+  color: #0f172a;
+}
+
+.register-form input[type="text"]:focus,
+.register-form input[type="email"]:focus,
+.register-form input[type="password"]:focus {
+  outline: none;
+  border: 1px solid var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.2);
+}
+
+.btn {
+  display: inline-block;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background-color: var(--primary-color);
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 1rem;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: var(--primary-dark);
+}
+
+.register-footer {
+  margin-top: 1.5rem;
+  text-align: center;
+  font-size: 1rem;
+  color: var(--gray-600);
+  font-weight: 500;
+}
+
+.register-footer a {
+  color: var(--primary-color);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.register-footer a:hover {
+  text-decoration: underline;
+}
