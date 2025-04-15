@@ -15,35 +15,61 @@ A smart, AI-powered recommender system to help users discover the most suitable 
 
 🧰 Tech Stack
 
-Tech	Description
+Tech	Description: 
+
 Node.js	Backend runtime environment
+
 Express.js	API framework
+
 JWT for Authentication
+
 MongoDB	Database for storing policies
+
 Mongoose	MongoDB object modeling
+
 Docker for running chromaDB image
+
 ChromaDB	Vector database for embeddings
+
 Gemini API	To generate vector embeddings
+
 dotenv	For environment configuration
+
 CORS	For handling cross-origin requests
 
 🛠 Setup Instructions
+
 step 1:Clone the repo
+
 git clone https://github.com/charan-anem-2004/Lic-Policy-Recommender-
-cd lic-policy-recommender
+
+
+
 
 step 2:Install dependencies
+
 npm install
 
+
 step 3:Create a .env file with these
+
 MONGO_URI=your_mongodb_connection_string
+
 GEMINI_API_KEY=your_google_gemini_api_key
+
 PORT=5000
 
+
+
 step 4:Start the fontend
+
 cd frontend
+
 npm run dev
 
+
 step 5:start the backend
+
 cd backend
+
 npm start
