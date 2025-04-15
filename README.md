@@ -29,7 +29,7 @@ CORS	For handling cross-origin requests
 
 🛠 Setup Instructions
 step 1:Clone the repo
-git clone https://github.com/yourusername/lic-policy-recommender.git
+git clone https://github.com/charan-anem-2004/Lic-Policy-Recommender-
 cd lic-policy-recommender
 
 step 2:Install dependencies
