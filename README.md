@@ -59,16 +59,26 @@ GEMINI_API_KEY=your_google_gemini_api_key
 
 PORT=5000
 
+step 4: chromaDB setup
+
+if you have chromaDB locally give the connection inside the chromaDB initialization function
+
+or else
+
+run the chromaDB image in the docker with port 8000 with this command(make sure you have docker installed)
+
+docker run -d --name chromadb -p 8000:8000 -e IS_PERSISTENT=TRUE chromadb/chroma:0.6.3
 
 
-step 4:Start the fontend
+
+step 5:Start the fontend
 
 cd frontend
 
 npm run dev
 
 
-step 5:start the backend
+step 6:start the backend
 
 cd backend
 
