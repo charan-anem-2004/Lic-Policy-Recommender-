@@ -1,13 +1,20 @@
-import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom';
-import { useContext } from 'react';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+  useLocation,
+} from "react-router-dom";
+import { useContext } from "react";
 
-import AuthState from './auth/AuthState';
-import AuthContext from './auth/AuthContext';
+import AuthState from "./auth/AuthState";
+import AuthContext from "./auth/AuthContext";
 
-import Login from './pages/Login';
-import Register from './pages/Register';
-import HomePage from './pages/Homepage';
-import RecommendationsPage from './pages/RecomendationPage';
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import HomePage from "./pages/Homepage";
+import RecommendationsPage from "./pages/RecomendationPage";
+import Footer from "./components/Footer";
 
 function PrivateRoute({ children }) {
   const { isAuthenticated, loading } = useContext(AuthContext);
@@ -15,7 +22,11 @@ function PrivateRoute({ children }) {
 
   if (loading) return <div>Loading...</div>;
 
-  return isAuthenticated ? children : <Navigate to="/" state={{ from: location }} replace />;
+  return isAuthenticated ? (
+    children
+  ) : (
+    <Navigate to="/login" state={{ from: location }} replace />
+  );
 }
 
 function PublicRoute({ children }) {
@@ -23,50 +34,55 @@ function PublicRoute({ children }) {
   return isAuthenticated ? <Navigate to="/home" /> : children;
 }
 
+// This is important to access route in App for conditional footer
+function AppRoutes() {
+  const location = useLocation();
+  const hideFooterRoutes = ["/login", "/register"];
+
+  const shouldHideFooter = hideFooterRoutes.includes(location.pathname);
+
+  return (
+    <>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route
+          path="/login"
+          element={
+            <PublicRoute>
+              <Login />
+            </PublicRoute>
+          }
+        />
+        <Route
+          path="/register"
+          element={
+            <PublicRoute>
+              <Register />
+            </PublicRoute>
+          }
+        />
+        <Route
+          path="/recommendations"
+          element={
+            <PrivateRoute>
+              <RecommendationsPage />
+            </PrivateRoute>
+          }
+        />
+        <Route path="*" element={<Navigate to="/" />} />
+      </Routes>
+
+      {/* Show footer only on selected pages */}
+      {!shouldHideFooter && <Footer />}
+    </>
+  );
+}
+
 export default function App() {
   return (
     <AuthState>
       <Router>
-        <Routes>
-          {/* Public routes */}
-          <Route
-            path="/"
-            element={
-              <PublicRoute>
-                <Login />
-              </PublicRoute>
-            }
-          />
-          <Route
-            path="/register"
-            element={
-              <PublicRoute>
-                <Register />
-              </PublicRoute>
-            }
-          />
-
-          {/* Private routes */}
-          <Route
-            path="/home"
-            element={
-              <PrivateRoute>
-                <HomePage />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="/recommendations"
-            element={
-              <PrivateRoute>
-                <RecommendationsPage />
-              </PrivateRoute>
-            }
-          />
-
-          {/* Catch-all route */}
-          <Route path="*" element={<Navigate to="/" />} />
-        </Routes>
+        <AppRoutes />
       </Router>
     </AuthState>
   );
