@@ -67,6 +67,7 @@ try {
       payload: res.data
     });
     alert("user registered sucessfully");
+    setAuthToken(res.data.token);
   
     loadUser();
   } catch (err) {
