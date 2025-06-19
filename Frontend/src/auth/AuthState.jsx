@@ -24,7 +24,7 @@ error: null
 };
 
 const [state, dispatch] = useReducer(authReducer, initialState);
-const base_url='http://localhost:5000';
+const base_url='https://lic-policy-recommender-backend.onrender.com';
 
 // Load User
 const loadUser = async () => {
