@@ -4,8 +4,9 @@ import Policy from '../models/Policy.js';
 
 // Initialize Chroma client with Docker connection
 const chroma = new ChromaClient({
-  path: "http://localhost:8000"
+  path: "https://dockerchromadb-production.up.railway.app"
 });
+
 
 // Declare collection variable at the module level
 let collection;
