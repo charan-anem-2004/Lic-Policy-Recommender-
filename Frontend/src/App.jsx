@@ -6,7 +6,7 @@ import AuthContext from './auth/AuthContext';
 
 import Login from './pages/Login';
 import Register from './pages/Register';
-import HomePage from './pages/HomePage';
+import HomePage from './pages/Homepage';
 import RecommendationsPage from './pages/RecomendationPage';
 
 function PrivateRoute({ children }) {
