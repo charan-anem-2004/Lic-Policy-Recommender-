@@ -7,7 +7,7 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between gap-10 border-b border-white/20 pb-8">
         {/* Logo + Description */}
         <div className="flex-1">
-          <h2 className="text-2xl font-bold mb-3">policy.ai</h2>
+          <h2 className="text-2xl font-bold mb-3 text-[#fcc860]">Policy.ai</h2>
           <p className="text-sm text-white/80">
             Helping you choose the best LIC policy tailored to your unique needs
             using intelligent AI recommendations. Secure your future today!
@@ -16,7 +16,7 @@ export default function Footer() {
 
         {/* Quick Links */}
         <div className="flex-1">
-          <h3 className="text-lg font-semibold mb-3">Quick Links</h3>
+          <h3 className="text-lg font-bold mb-3 text-[#fcc860]">Quick Links</h3>
           <ul className="space-y-2 text-white/90 text-sm">
             <li>
               <Link to="/" className="hover:text-[#fcc860] transition">
@@ -41,7 +41,7 @@ export default function Footer() {
 
         {/* Contact / Support */}
         <div className="flex-1">
-          <h3 className="text-lg font-semibold mb-3">Contact</h3>
+          <h3 className="text-lg font-bold mb-3 text-[#fcc860]">Contact</h3>
           <ul className="space-y-2 text-white/90 text-sm">
             <li>
               Email:{" "}
