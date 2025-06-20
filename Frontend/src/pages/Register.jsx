@@ -1,17 +1,26 @@
 import React, { useState, useContext, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import AuthContext from "../auth/AuthContext";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Register = () => {
   const navigate = useNavigate();
   const authContext = useContext(AuthContext);
   const { register, error, clearErrors, isAuthenticated } = authContext;
 
+  const [loading, setLoading] = useState(false);
+
   useEffect(() => {
     if (isAuthenticated) {
       navigate("/");
     }
-  }, [isAuthenticated, navigate]);
+
+    if (error) {
+      clearErrors();
+      setLoading(false);
+    }
+  }, [isAuthenticated, error, navigate, clearErrors]);
 
   const [user, setUser] = useState({
     username: "",
@@ -26,11 +35,18 @@ const Register = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    if (username === "" || email === "" || password === "") {
-      alert("Please enter all fields");
+
+    if (
+      username === "" ||
+      email === "" ||
+      password === "" ||
+      password2 === ""
+    ) {
+      toast.error("Please enter all fields");
     } else if (password !== password2) {
-      alert("Passwords do not match");
+      toast.error("Passwords didn't match");
     } else {
+      setLoading(true);
       register({ username, email, password });
     }
   };
@@ -128,9 +144,38 @@ const Register = () => {
           {/* Submit Button */}
           <button
             type="submit"
-            className="w-full py-3 bg-[#fcc860] text-[#003461] font-semibold rounded-full hover:opacity-90 transition"
+            disabled={loading}
+            className={`w-full py-3 bg-[#fcc860] text-[#003461] font-semibold rounded-full transition hover:opacity-90 flex items-center justify-center ${
+              loading ? "opacity-70 cursor-not-allowed" : ""
+            }`}
           >
-            Register
+            {loading ? (
+              <>
+                <svg
+                  className="animate-spin h-5 w-5 mr-2 text-[#003461]"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  <circle
+                    className="opacity-25"
+                    cx="12"
+                    cy="12"
+                    r="10"
+                    stroke="currentColor"
+                    strokeWidth="4"
+                  ></circle>
+                  <path
+                    className="opacity-75"
+                    fill="currentColor"
+                    d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
+                  ></path>
+                </svg>
+                Creating...
+              </>
+            ) : (
+              "Register"
+            )}
           </button>
         </form>
 

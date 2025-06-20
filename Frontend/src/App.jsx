@@ -15,6 +15,10 @@ import Register from "./pages/Register";
 import HomePage from "./pages/Homepage";
 import RecommendationsPage from "./pages/RecomendationPage";
 import Footer from "./components/Footer";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+// In App component
 
 function PrivateRoute({ children }) {
   const { isAuthenticated, loading } = useContext(AuthContext);
@@ -74,6 +78,15 @@ function AppRoutes() {
 
       {/* Show footer only on selected pages */}
       {!shouldHideFooter && <Footer />}
+      <ToastContainer
+        position="top-center"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop
+        closeOnClick
+        pauseOnHover
+        draggable
+      />
     </>
   );
 }
