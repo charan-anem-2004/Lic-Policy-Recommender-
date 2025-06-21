@@ -2,7 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 
 export default function PolicyChatbot({ recommendations, userQuery }) {
-  const baseUrl = "http://localhost:3000";
+  const baseUrl = "https://lic-policy-recommender-backend.onrender.com";
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);

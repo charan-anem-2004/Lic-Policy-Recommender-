@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_BASE_URL = 'http://localhost:3000'; // Update with your backend URL
+const API_BASE_URL = 'https://lic-policy-recommender-backend.onrender.com'; // Update with your backend URL
 
 export const searchPolicies = async (query) => {
   try {
