@@ -1,20 +1,25 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { searchPolicies } from "../services/api";
+import PolicyChatbot from "../components/PolicyChatBot";
 
 export default function RecommendationsPage() {
   const [policies, setPolicies] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [query, setQuery] = useState("");
   const location = useLocation();
 
   useEffect(() => {
     const queryParams = new URLSearchParams(location.search);
-    const query = queryParams.get("q");
+    const q = queryParams.get("q");
+    setQuery(q);
 
     const fetchPolicies = async () => {
+      if (!q) return;
+
       setLoading(true);
       try {
-        const results = await searchPolicies(query);
+        const results = await searchPolicies(q);
         setPolicies(results);
       } catch (error) {
         console.error("Error fetching policies:", error);
@@ -23,7 +28,7 @@ export default function RecommendationsPage() {
       }
     };
 
-    if (query) fetchPolicies();
+    fetchPolicies();
   }, [location.search]);
 
   return (
@@ -80,6 +85,12 @@ export default function RecommendationsPage() {
           </div>
         )}
       </div>
+
+      {loading ? (
+        <></>
+      ) : (
+        <PolicyChatbot recommendations={policies} userQuery={query} />
+      )}
     </div>
   );
 }

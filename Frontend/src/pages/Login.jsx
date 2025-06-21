@@ -17,7 +17,6 @@ const Login = () => {
 
   const { email, password } = user;
 
-  // Handle redirection after successful login
   useEffect(() => {
     if (isAuthenticated) {
       const storedPrompt = localStorage.getItem("licPrompt");
@@ -30,7 +29,6 @@ const Login = () => {
     }
   }, [isAuthenticated, navigate]);
 
-  // Show error toast if login fails
   useEffect(() => {
     if (error) {
       clearErrors();
@@ -96,7 +94,6 @@ const Login = () => {
             />
           </div>
 
-          {/* Submit Button with Spinner */}
           <button
             type="submit"
             disabled={isSubmitting}

@@ -25,7 +25,7 @@ const AuthState = (props) => {
   };
 
   const [state, dispatch] = useReducer(authReducer, initialState);
-  const base_url = "https://lic-policy-recommender-backend.onrender.com";
+  const base_url = "http://localhost:3000"; // Update with your backend URL
 
   // Load User
   const loadUser = async () => {

@@ -1,17 +1,16 @@
 import { ChromaClient } from 'chromadb';
 import { getEmbedding } from './geminiService.js';
 import Policy from '../models/Policy.js';
+import dotenv from 'dotenv';
+dotenv.config();
 
-// Initialize Chroma client with Docker connection
 const chroma = new ChromaClient({
-  path: "https://dockerchromadb-production.up.railway.app"
+  path: process.env.CHROMA_PATH 
 });
 
 
-// Declare collection variable at the module level
 let collection;
 
-// Custom embedding function class for Gemini
 class GeminiEmbeddingFunction {
   constructor() {}
   

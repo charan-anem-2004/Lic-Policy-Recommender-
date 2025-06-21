@@ -7,6 +7,7 @@ import searchRoutes from './routes/searchRoutes.js';
 import { initializeVectorDB } from './services/vectorService.js';
 import vectorrefresh from './routes/vectorrefresh.js'; // Import the vector-refresh route
 import Auth from './routes/Auth.js'; // Import the Auth route
+import chatRoutes from './routes/chatRoutes.js';
 
 const app = express();
 
@@ -20,6 +21,7 @@ app.use('/api/policies', policyRoutes);
 app.use('/api/search', searchRoutes);
 app.use('/api/vector-refresh',vectorrefresh)
 app.use('/api/auth', Auth);
+app.use('/api/chat', chatRoutes);
 
 // Database connection
 await connectDB();
@@ -38,7 +40,7 @@ app.get('/', (req, res) => {
   res.send('API is running...');
 });
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
